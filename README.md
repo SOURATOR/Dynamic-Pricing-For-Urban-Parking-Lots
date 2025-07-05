@@ -1,6 +1,6 @@
 # Dynamic-Pricing-For-Urban-Parking-Lots
 ## Overview
-#### This project utilizes a simulated real time data stream to build an intelligent, data-driven pricing engine for 14 parking spaces. The goal is to dynamically adjust parking prices based on real-time utilization, demand conditions, and competitive factors to facilitate revenue optimization. It implements three distinct pricing models using Pathway, a Python-native stream processing engine, and renders results using Bokeh and Panel dashboards. The data was sampled for 73 days at 18 time points per day with 30 minutes of time difference. 
+#### This project utilizes a simulated real time data stream to build an intelligent, data-driven pricing engine for 14 parking spaces. The goal is to dynamically adjust parking prices based on real-time utilization and demand conditions to facilitate revenue optimization. It implements two distinct pricing models using Pathway, a Python-native stream processing engine, and renders results using Bokeh and Panel dashboards. The data was sampled for 73 days at 18 time points per day with 30 minutes of time difference. 
 
 #### The two pricing models used were:
 ### Baseline Linear Model: 
