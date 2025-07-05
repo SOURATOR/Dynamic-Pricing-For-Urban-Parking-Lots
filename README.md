@@ -5,7 +5,11 @@
 #### The two pricing models used were:
 ### Baseline Linear Model: 
 #### A simple model where the next price is a function of the previous price and current occupancy:
-![Baseline Linear Model](Baseline_Linear_Model_Formula.png)
+
+<p align="center">
+<img src="Baseline_Linear_Model_Formula.png"/>
+</p>
+
 #### This model utilizes two features: Capacity and Occupancy. The price increases linearly as the ratio between occupancy and capacity increases. 
 
 ### Demand Based Pricing Model: 
@@ -19,11 +23,26 @@
 #### Numpy (Numerical Computing)
 #### Pathway (Stateful Stream Processing)
 #### Bokeh + Panel (Interactive Dashboards)
+#### HTML (Image Rendering In GitHub)
 
 ## Project Architecture
 ### Baseline Linear Model
-#### The csv file of parking slot data is loaded and replayed as a simulated data stream using Pathway after defining schema. Timestamps are created and parsed and the ratio of occupancy to capacity, known as utilization is calculated. The pricing model is implamanted as a recursive stateful function and a Python dictionary is used to maintain the internal state. The price estimates are bounded at 0.5-2 times the baseline price to smooth fluctuations. 14 bokeh plots are used to visualize pricing plots in real time. The complete architecture diagram is as follows:
+#### The csv file of parking slot data is loaded and replayed as a simulated data stream using Pathway after defining schema. Timestamps are created and parsed and the ratio of occupancy to capacity, known as utilization is calculated. The pricing model is implamanted as a recursive stateful function and a Python dictionary is used to maintain the internal state. The mean price for each day is calculated and 14 bokeh plots are used to visualize pricing plots in real time. The complete architecture diagram is as follows:
+<p align="center">
 <img src="Baseline_Architecture.png" alt="Baseline_Architecture" width="200"/>
+</p>
+
+#### The bokeh plots reveals that some parking lots experience high price fluctuations due to high and volatile demand whereas price fluctuations is relatively smooth for other lots due to less volatility of demand. Example plots of four such parking lots are provided below.
+<p align="center">
+  <img src="baseline_linear_BHMBCCMKT01.png" width="45%"/>
+  <img src="baseline_linear_Others-CCCPS105a.png" width="45%"/>
+</p>
+<p align="center">
+  <img src="baseline_linear_Others-CCCPS119a.png" width="45%"/>
+  <img src="baseline_linear_Others-CCCPST35a.png" width="45%"/>
+</p>
+
+#### Evidently the price fluctuation is smooth for Others-CCCPS119a and it is relatively high for Others-CCCPS135a. This might lead to the conclusion that demand is less volatile for Others-CCCPS119a and hence it is less sensitive to occupancy ratio. 
 
 ### Demand Based Pricing Model
 #### The csv file of parking slot data is loaded and replayed as a simulated data stream using Pathway after defining schema. Timestamps are created and parsed and the ratio of occupancy to capacity, known as utilization is calculated. Categorical features such as traffic conditions and VehicleType are assigned relative weights and encoded. Parameter values are arbitrarily set and demand function is estimated. The raw demand function is normalized via sigmoid (logistic function) and price is estimated using the function of baseline price and demand. The price estimates are bounded at 0.5-2 times the baseline price to smooth fluctuations. 14 bokeh plots are used to visualize pricing plots in real time. The mean price is higher than the previous model since this model takes several determinants of demand into consideration. The complete architecture diagram is as follows:
