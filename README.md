@@ -14,9 +14,16 @@
 
 ### Demand Based Pricing Model: 
 #### This model estimates demand for parking slots using the features: Occupancy, Queue length, Traffic level, Special day and Vehicle type. This is a more nuanced model as it incorporates several variables which influences demand. The demand estimation function used is as follows:
-![Demand Estimation Formula](Demand_Estimaton_Formula.png)
+
+<p align="center">
+<img src="Demand_Estimaton_Formula.png"/>
+</p>
+
 #### The price is estimated as a function of the base price of $10 and the normalized demand estimated from the previous function. The demand estimate was normalized using sigmoid (logistic) function. The pricing formula is as follows:
-![Demand_Based_Pricing_Function](Demand_Based_Pricing_Function.png)
+
+<p align="center">
+<img src="Demand_Based_Pricing_Function.png"/>
+</p>
 
 ## Tech Stack
 #### Google Colab (Execution Environment)
@@ -46,7 +53,21 @@
 
 ### Demand Based Pricing Model
 #### The csv file of parking slot data is loaded and replayed as a simulated data stream using Pathway after defining schema. Timestamps are created and parsed and the ratio of occupancy to capacity, known as utilization is calculated. Categorical features such as traffic conditions and VehicleType are assigned relative weights and encoded. Parameter values are arbitrarily set and demand function is estimated. The raw demand function is normalized via sigmoid (logistic function) and price is estimated using the function of baseline price and demand. The price estimates are bounded at 0.5-2 times the baseline price to smooth fluctuations. 14 bokeh plots are used to visualize pricing plots in real time. The mean price is higher than the previous model since this model takes several determinants of demand into consideration. The complete architecture diagram is as follows:
-<img src="Demand_Pricing_Architecture.png" alt="Demand_Pricing_Architecture" width="200"/>
 
+<p align="center">
+<img src="Demand_Pricing_Architecture.png" alt="Demand_Pricing_Architecture" width="200"/>
+</p>
+
+#### The bokeh plots reveals that the minimum price level is above $17, hence overall price of the parking lots increase as more features are taken into consideration. Example plots of four such parking lots are provided below.
+<p align="center">
+  <img src="demand_pricing_BHMBCCMKT01.png" width="45%"/>
+  <img src="demand_pricing_CCCPS105a.png" width="45%"/>
+</p>
+<p align="center">
+  <img src="demand_pricing_CCCPS119a.png" width="45%"/>
+  <img src="demand_pricing_CCCPS135a.png" width="45%"/>
+</p>
+
+#### Evidently the price fluctuation for the same four plots is much lower than the baseline linear model. This is not only due to reduction in noise but also the sigmoid normalization of the estimated demand function and the range capping of prices between 0.5-2 times baseline price. This pricing model is more efficient from a business perspective as the fluctuations in prices are smoother and it provides an overall idea about the relative demand for parking lots.
 
 #### These two pricing models using real time data can help identify and understand which economic factors influence demand for parking slots in urban areas and dynamically set prices to ensure revenue optimization. 
