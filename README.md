@@ -7,7 +7,7 @@
 #### A simple model where the next price is a function of the previous price and current occupancy:
 
 <p align="center">
-<img src="Baseline_Linear_Model_Formula.png"/>
+<img src="/images/Baseline_Linear_Model_Formula.png"/>
 </p>
 
 #### This model utilizes two features: Capacity and Occupancy. The price increases linearly as the ratio between occupancy and capacity increases. 
@@ -22,7 +22,7 @@
 #### The price is estimated as a function of the base price of $10 and the normalized demand estimated from the previous function. The demand estimate was normalized using sigmoid (logistic) function. The pricing formula is as follows:
 
 <p align="center">
-<img src="Demand_Based_Pricing_Function.png"/>
+<img src="/images/Demand_Based_Pricing_Function.png"/>
 </p>
 
 ## Tech Stack
@@ -30,6 +30,7 @@
 #### Numpy (Numerical Computing)
 #### Pathway (Stateful Stream Processing)
 #### Bokeh + Panel (Interactive Dashboards)
+#### Git (Version Control)
 #### HTML (Image Rendering In GitHub)
 
 ## Project Architecture
@@ -41,12 +42,12 @@
 
 #### The bokeh plots reveals that some parking lots experience high price fluctuations due to high and volatile demand whereas price fluctuations is relatively smooth for other lots due to less volatility of demand. Example plots of four such parking lots are provided below.
 <p align="center">
-  <img src="baseline_linear_BHMBCCMKT01.png" width="45%"/>
-  <img src="baseline_linear_Others-CCCPS105a.png" width="45%"/>
+  <img src="/images/baseline_linear_BHMBCCMKT01.png" width="45%"/>
+  <img src="/images/baseline_linear_Others-CCCPS105a.png" width="45%"/>
 </p>
 <p align="center">
-  <img src="baseline_linear_Others-CCCPS119a.png" width="45%"/>
-  <img src="baseline_linear_Others-CCCPST35a.png" width="45%"/>
+  <img src="/images/baseline_linear_Others-CCCPS119a.png" width="45%"/>
+  <img src="/images/baseline_linear_Others-CCCPST35a.png" width="45%"/>
 </p>
 
 #### Evidently the price fluctuation is smooth for Others-CCCPS119a and it is relatively high for Others-CCCPS135a. This might lead to the conclusion that demand is less volatile for Others-CCCPS119a and hence it is less sensitive to occupancy ratio. 
@@ -55,17 +56,17 @@
 #### The csv file of parking slot data is loaded and replayed as a simulated data stream using Pathway after defining schema. Timestamps are created and parsed and the ratio of occupancy to capacity, known as utilization is calculated. Categorical features such as traffic conditions and VehicleType are assigned relative weights and encoded. Parameter values are arbitrarily set and demand function is estimated. The raw demand function is normalized via sigmoid (logistic function) and price is estimated using the function of baseline price and demand. The price estimates are bounded at 0.5-2 times the baseline price to smooth fluctuations. 14 bokeh plots are used to visualize pricing plots in real time. The mean price is higher than the previous model since this model takes several determinants of demand into consideration. The complete architecture diagram is as follows:
 
 <p align="center">
-<img src="Demand_Pricing_Architecture.png" alt="Demand_Pricing_Architecture" width="200"/>
+<img src="/images/Demand_Pricing_Architecture.png" alt="Demand_Pricing_Architecture" width="200"/>
 </p>
 
 #### The bokeh plots reveals that the minimum price level is above $17, hence overall price of the parking lots increase as more features are taken into consideration. Example plots of four such parking lots are provided below.
 <p align="center">
-  <img src="demand_pricing_BHMBCCMKT01.png" width="45%"/>
-  <img src="demand_pricing_CCCPS105a.png" width="45%"/>
+  <img src="/images/demand_pricing_BHMBCCMKT01.png" width="45%"/>
+  <img src="/images/demand_pricing_CCCPS105a.png" width="45%"/>
 </p>
 <p align="center">
-  <img src="demand_pricing_CCCPS119a.png" width="45%"/>
-  <img src="demand_pricing_CCCPS135a.png" width="45%"/>
+  <img src="/images/demand_pricing_CCCPS119a.png" width="45%"/>
+  <img src="/images/demand_pricing_CCCPS135a.png" width="45%"/>
 </p>
 
 #### Evidently the price fluctuation for the same four plots is much lower than the baseline linear model. This is not only due to reduction in noise but also the sigmoid normalization of the estimated demand function and the range capping of prices between 0.5-2 times baseline price. This pricing model is more efficient from a business perspective as the fluctuations in prices are smoother and it provides an overall idea about the relative demand for parking lots.
