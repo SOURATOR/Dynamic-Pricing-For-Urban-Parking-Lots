@@ -16,7 +16,7 @@
 #### This model estimates demand for parking slots using the features: Occupancy, Queue length, Traffic level, Special day and Vehicle type. This is a more nuanced model as it incorporates several variables which influences demand. The demand estimation function used is as follows:
 
 <p align="center">
-<img src="Demand_Estimaton_Formula.png"/>
+<img src="/images/Demand_Estimaton_Formula.png"/>
 </p>
 
 #### The price is estimated as a function of the base price of $10 and the normalized demand estimated from the previous function. The demand estimate was normalized using sigmoid (logistic) function. The pricing formula is as follows:
@@ -37,7 +37,7 @@
 ### Baseline Linear Model
 #### The csv file of parking slot data is loaded and replayed as a simulated data stream using Pathway after defining schema. Timestamps are created and parsed and the ratio of occupancy to capacity, known as utilization is calculated. The pricing model is implamanted as a recursive stateful function and a Python dictionary is used to maintain the internal state. The mean price for each day is calculated and 14 bokeh plots are used to visualize pricing plots in real time. The complete architecture diagram is as follows:
 <p align="center">
-<img src="Baseline_Architecture.png" alt="Baseline_Architecture" width="200"/>
+<img src="/images/Baseline_Architecture.png" alt="Baseline_Architecture" width="200"/>
 </p>
 
 #### The bokeh plots reveals that some parking lots experience high price fluctuations due to high and volatile demand whereas price fluctuations is relatively smooth for other lots due to less volatility of demand. Example plots of four such parking lots are provided below.
