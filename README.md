@@ -71,4 +71,5 @@
 
 #### Evidently the price fluctuation for the same four plots is much lower than the baseline linear model. This is not only due to reduction in noise but also the sigmoid normalization of the estimated demand function and the range capping of prices between 0.5-2 times baseline price. This pricing model is more efficient from a business perspective as the fluctuations in prices are smoother and it provides an overall idea about the relative demand for parking lots.
 
+#### The set of 14 plots for each model is provided in .png format in the Baseline Linear Model Plots and Demand Pricing Model Plots directories. 
 #### These two pricing models using real time data can help identify and understand which economic factors influence demand for parking slots in urban areas and dynamically set prices to ensure revenue optimization. 
